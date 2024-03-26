@@ -15,7 +15,7 @@ export class PemaAmbulanceWlList {
   private async getWaitingPatientsAsync() {
     return await Promise.resolve(
       [{
-        name: 'Peter Gabor',
+        name: 'Jožko Púčik',
         patientId: '10001',
         since: new Date(Date.now() - 10 * 60).toISOString(),
         estimatedStart: new Date(Date.now() + 65 * 60).toISOString(),
