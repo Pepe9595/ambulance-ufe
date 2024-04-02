@@ -6,24 +6,84 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface PemaAmbulanceWlApp {
+        "basePath": string;
+    }
+    interface PemaAmbulanceWlEditor {
+        "entryId": string;
+    }
     interface PemaAmbulanceWlList {
     }
 }
+export interface PemaAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPemaAmbulanceWlEditorElement;
+}
+export interface PemaAmbulanceWlListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPemaAmbulanceWlListElement;
+}
 declare global {
+    interface HTMLPemaAmbulanceWlAppElement extends Components.PemaAmbulanceWlApp, HTMLStencilElement {
+    }
+    var HTMLPemaAmbulanceWlAppElement: {
+        prototype: HTMLPemaAmbulanceWlAppElement;
+        new (): HTMLPemaAmbulanceWlAppElement;
+    };
+    interface HTMLPemaAmbulanceWlEditorElementEventMap {
+        "editor-closed": string;
+    }
+    interface HTMLPemaAmbulanceWlEditorElement extends Components.PemaAmbulanceWlEditor, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPemaAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLPemaAmbulanceWlEditorElement, ev: PemaAmbulanceWlEditorCustomEvent<HTMLPemaAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPemaAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLPemaAmbulanceWlEditorElement, ev: PemaAmbulanceWlEditorCustomEvent<HTMLPemaAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPemaAmbulanceWlEditorElement: {
+        prototype: HTMLPemaAmbulanceWlEditorElement;
+        new (): HTMLPemaAmbulanceWlEditorElement;
+    };
+    interface HTMLPemaAmbulanceWlListElementEventMap {
+        "entry-clicked": string;
+    }
     interface HTMLPemaAmbulanceWlListElement extends Components.PemaAmbulanceWlList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPemaAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLPemaAmbulanceWlListElement, ev: PemaAmbulanceWlListCustomEvent<HTMLPemaAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPemaAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLPemaAmbulanceWlListElement, ev: PemaAmbulanceWlListCustomEvent<HTMLPemaAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPemaAmbulanceWlListElement: {
         prototype: HTMLPemaAmbulanceWlListElement;
         new (): HTMLPemaAmbulanceWlListElement;
     };
     interface HTMLElementTagNameMap {
+        "pema-ambulance-wl-app": HTMLPemaAmbulanceWlAppElement;
+        "pema-ambulance-wl-editor": HTMLPemaAmbulanceWlEditorElement;
         "pema-ambulance-wl-list": HTMLPemaAmbulanceWlListElement;
     }
 }
 declare namespace LocalJSX {
+    interface PemaAmbulanceWlApp {
+        "basePath"?: string;
+    }
+    interface PemaAmbulanceWlEditor {
+        "entryId"?: string;
+        "onEditor-closed"?: (event: PemaAmbulanceWlEditorCustomEvent<string>) => void;
+    }
     interface PemaAmbulanceWlList {
+        "onEntry-clicked"?: (event: PemaAmbulanceWlListCustomEvent<string>) => void;
     }
     interface IntrinsicElements {
+        "pema-ambulance-wl-app": PemaAmbulanceWlApp;
+        "pema-ambulance-wl-editor": PemaAmbulanceWlEditor;
         "pema-ambulance-wl-list": PemaAmbulanceWlList;
     }
 }
@@ -31,6 +91,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "pema-ambulance-wl-app": LocalJSX.PemaAmbulanceWlApp & JSXBase.HTMLAttributes<HTMLPemaAmbulanceWlAppElement>;
+            "pema-ambulance-wl-editor": LocalJSX.PemaAmbulanceWlEditor & JSXBase.HTMLAttributes<HTMLPemaAmbulanceWlEditorElement>;
             "pema-ambulance-wl-list": LocalJSX.PemaAmbulanceWlList & JSXBase.HTMLAttributes<HTMLPemaAmbulanceWlListElement>;
         }
     }

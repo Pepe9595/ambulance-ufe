@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Event, EventEmitter,  Host, h } from '@stencil/core';
 import '@material/web/list/list'
 import '@material/web/list/list-item'
 import '@material/web/icon/icon'
@@ -9,6 +9,7 @@ import '@material/web/icon/icon'
   shadow: true,
 })
 export class PemaAmbulanceWlList {
+  @Event({ eventName: "entry-clicked"}) entryClicked: EventEmitter<string>;
 
   waitingPatients: any[];
 
@@ -47,8 +48,8 @@ export class PemaAmbulanceWlList {
     return (
       <Host>
         <md-list>
-          {this.waitingPatients.map(patient =>
-            <md-list-item>
+          {this.waitingPatients.map((patient, index) =>
+            <md-list-item onClick={ () => this.entryClicked.emit(index.toString())}>
               <div slot="headline">{patient.name}</div>
               <div slot="supporting-text">{"Predpokladaný vstup: " + this.isoDateToLocale(patient.estimatedStart)}</div>
               <md-icon slot="start">person</md-icon>
